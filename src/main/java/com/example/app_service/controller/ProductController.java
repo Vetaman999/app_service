@@ -36,7 +36,7 @@ public class ProductController {
                     "application/json"))
     })
     @GetMapping("/products")
-    public Page<ProductResource> getAllBills(Pageable pageable) {
+    public Page<ProductResource> getAllProducts(Pageable pageable) {
         Page<Product> productPage = productService.getAllProducts(pageable);
         List<ProductResource> resources = productPage.getContent().
                 stream().map(this::convertToResource).
@@ -81,6 +81,5 @@ public class ProductController {
     private ProductResource convertToResource(Product entity) {
         return mapper.map(entity, ProductResource.class);
     }
-
 
 }
